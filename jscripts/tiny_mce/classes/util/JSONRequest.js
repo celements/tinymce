@@ -89,8 +89,9 @@
 				params : o.params
 			});
 
-			// JSON content type for Ruby on rails. Bug: #1883287
-			o.content_type = 'application/json';
+			// JSON content must for xwiki be submitted as a form encoded parameter
+			o.data = "json=" + encodeURIComponent(o.data);
+      o.content_type = 'application/x-www-form-urlencoded';
 
 			XHR.send(o);
 		},
